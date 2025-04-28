@@ -3,40 +3,47 @@ import { Button } from './ui/button';
 
 const AboutSection = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-20 bg-white" id="about">
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Изображение с элементами дизайна */}
+        <h2 className="section-title">О компании</h2>
+        
+        <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <div className="diagonal-box h-64 w-full lg:h-96 mb-6 lg:mb-0 overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                alt="Команда СибЭлком"
-                className="object-cover h-full w-full"
+            <div className="aspect-video rounded-lg overflow-hidden shadow-lg relative">
+              <img 
+                src="https://images.unsplash.com/photo-1581092921461-39b9a49e5544?q=80&w=1470&auto=format&fit=crop" 
+                alt="Офис СибЭлком" 
+                className="w-full h-full object-cover"
               />
               {/* Декоративный элемент в стиле логотипа */}
-              <div className="absolute -bottom-6 -right-6">
-                <div className="diamond-shape bg-sibelcom-orange w-16 h-16">
-                  <div className="absolute inset-0 flex items-center justify-center z-10">
-                    <div className="diamond-shape bg-white w-10 h-10"></div>
-                  </div>
-                </div>
-              </div>
+              <div className="absolute -right-5 -bottom-5 w-20 h-20 border-4 border-sibelcom-orange transform rotate-45 bg-white/30"></div>
             </div>
+            {/* Серый элемент, имитирующий серую часть логотипа */}
+            <div className="absolute -left-5 -top-5 w-16 h-16 bg-sibelcom-gray transform -rotate-45"></div>
           </div>
           
-          {/* Текстовый контент */}
-          <div>
-            <h2 className="section-heading">О компании</h2>
-            <p className="text-lg mb-4">
-              Компания "СибЭлком Логистика" специализируется на прямых поставках электронных компонентов от ведущих китайских производителей. За более чем 13 лет работы мы установили надежные партнерские отношения с крупнейшими фабриками и дистрибьюторами Китая.
+          <div className="space-y-6">
+            <div className="diamond-decoration">
+              <p className="text-lg font-medium text-sibelcom-gray">
+                СибЭлком - надежный партнер в поставках электронных компонентов
+              </p>
+            </div>
+            
+            <p className="text-gray-600">
+              Компания "СибЭлком Логистика" специализируется на прямых поставках электронных компонентов от ведущих китайских производителей. С 2010 года мы обеспечиваем российские предприятия качественными электронными комплектующими по конкурентным ценам.
             </p>
-            <p className="text-lg mb-6">
-              Наша цель — обеспечить российские предприятия качественными комплектующими по конкурентоспособным ценам. Мы гарантируем подлинность всех поставляемых компонентов и предоставляем полную техническую поддержку на каждом этапе сотрудничества.
+            
+            <p className="text-gray-600">
+              Благодаря налаженным связям с производителями и отлаженной логистической цепочке, мы гарантируем кратчайшие сроки поставки и предоставляем полную гарантию на весь ассортимент товаров.
             </p>
-            <Button className="bg-sibelcom-orange hover:bg-sibelcom-orange/90 text-white flex items-center group">
+            
+            <p className="text-gray-600">
+              Наша команда профессионалов поможет с подбором аналогов компонентов и проконсультирует по всем техническим вопросам.
+            </p>
+            
+            <Button className="mt-8 bg-sibelcom-orange hover:bg-sibelcom-orange/90 text-white">
               Подробнее о компании
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </div>

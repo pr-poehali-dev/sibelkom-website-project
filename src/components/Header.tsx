@@ -23,7 +23,11 @@ const Header = () => {
       <div className="container-custom flex items-center justify-between h-20">
         {/* Логотип */}
         <Link to="/" className="flex items-center">
-          <img src="/logo.png" alt="СибЭлком Логистика" className="h-12" />
+          <img 
+            src="https://cdn.poehali.dev/files/68b46334-4f57-4c20-8e94-7a76b73423ec.png" 
+            alt="СибЭлком Логистика" 
+            className="h-12 object-contain" 
+          />
         </Link>
 
         {/* Меню для десктопа */}
@@ -55,7 +59,11 @@ const Header = () => {
             <div className="container mx-auto px-4">
               <div className="flex justify-between items-center mb-8">
                 <Link to="/" className="flex items-center">
-                  <img src="/logo.png" alt="СибЭлком Логистика" className="h-12" />
+                  <img 
+                    src="https://cdn.poehali.dev/files/68b46334-4f57-4c20-8e94-7a76b73423ec.png" 
+                    alt="СибЭлком Логистика" 
+                    className="h-12 object-contain" 
+                  />
                 </Link>
                 <button
                   className="text-sibelcom-darkgray"
