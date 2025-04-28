@@ -1,134 +1,114 @@
-import { useState } from 'react';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
-type Testimonial = {
-  id: number;
-  name: string;
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+
+interface Testimonial {
+  quote: string;
+  author: string;
+  position: string;
   company: string;
-  role: string;
   image: string;
-  text: string;
-  rating: number;
-};
+}
+
+const testimonials: Testimonial[] = [
+  {
+    quote: "СибЭлком Логистика обеспечивает нас качественными компонентами уже более 5 лет. Ни разу не подвели с качеством и сроками поставки. Особенно ценим их способность оперативно найти редкие компоненты.",
+    author: "Александр Петров",
+    position: "Технический директор",
+    company: "ООО 'НПО Электроника'",
+    image: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    quote: "Профессиональный подход к поставкам и отличное качество компонентов. Сотрудничаем с компанией уже 3 года и всегда получаем именно то, что заказываем, в оговоренные сроки.",
+    author: "Елена Иванова",
+    position: "Руководитель отдела закупок",
+    company: "АО 'Технопрогресс'",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    quote: "Благодаря СибЭлком Логистика мы смогли решить проблему с поставками компонентов, когда наш прежний поставщик не смог выполнить обязательства. Они оперативно нашли все необходимое и доставили в кратчайшие сроки.",
+    author: "Михаил Соколов",
+    position: "Генеральный директор",
+    company: "ЗАО 'Микрон'",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+  }
+];
 
 const TestimonialsSection = () => {
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      name: 'Алексей Петров',
-      company: 'ТехноМикс',
-      role: 'Технический директор',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80',
-      text: 'Сотрудничаем с СибЭлком Логистика более 5 лет. За это время ни разу не возникло проблем с качеством компонентов. Особенно ценим оперативность поставок и профессиональные консультации по подбору аналогов.',
-      rating: 5,
-    },
-    {
-      id: 2,
-      name: 'Марина Соколова',
-      company: 'Электроника-Плюс',
-      role: 'Директор по закупкам',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80',
-      text: 'Благодаря сотрудничеству с СибЭлком Логистика мы смогли значительно сократить сроки поставок компонентов для наших проектов. Отдельная благодарность за помощь в подборе аналогов снятых с производства микросхем.',
-      rating: 5,
-    },
-    {
-      id: 3,
-      name: 'Дмитрий Иванов',
-      company: 'НПО Импульс',
-      role: 'Главный инженер',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=256&q=80',
-      text: 'Надёжный поставщик с отличным сервисом. Всегда держат в курсе о статусе заказа, предоставляют подробную документацию. За три года сотрудничества ни одной задержки или проблемы с качеством.',
-      rating: 4,
-    },
-  ];
-
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextTestimonial = () => {
-    setActiveIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prevIndex) => (prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1));
   };
 
   const prevTestimonial = () => {
-    setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1));
   };
 
   return (
     <section className="py-16 bg-sibelcom-lightBg">
       <div className="container-custom">
-        <h2 className="section-title">Отзывы клиентов</h2>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4 text-sibelcom-black">Отзывы клиентов</h2>
+          <p className="text-gray-700 max-w-2xl mx-auto">
+            Что говорят о нас те, кто уже оценил качество нашей работы
+          </p>
+        </div>
         
-        <div className="relative mt-12 max-w-4xl mx-auto">
-          <div className="absolute top-1/2 -left-4 transform -translate-y-1/2 z-10">
-            <button
-              onClick={prevTestimonial}
-              className="p-2 rounded-full bg-white shadow-md text-sibelcom-black hover:bg-sibelcom-yellow transition-colors"
-              aria-label="Предыдущий отзыв"
-            >
-              <ChevronLeft size={20} />
-            </button>
+        <div className="relative max-w-4xl mx-auto">
+          <div className="absolute -left-8 top-1/2 transform -translate-y-1/2 text-sibelcom-yellow opacity-25">
+            <Quote size={60} />
           </div>
           
-          <div className="overflow-hidden">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-            >
-              {testimonials.map((testimonial) => (
-                <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
-                  <div className="bg-white p-8 rounded-lg shadow-md">
-                    <div className="flex items-center mb-6">
-                      <div className="flex-shrink-0 mr-4">
-                        <img 
-                          src={testimonial.image} 
-                          alt={testimonial.name} 
-                          className="w-16 h-16 rounded-full object-cover"
-                        />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-lg">{testimonial.name}</h3>
-                        <p className="text-sibelcom-gray text-sm">{testimonial.role}, {testimonial.company}</p>
-                        <div className="flex mt-1">
-                          {[...Array(5)].map((_, i) => (
-                            <Star 
-                              key={i} 
-                              size={16} 
-                              className={i < testimonial.rating ? 'text-sibelcom-yellow fill-sibelcom-yellow' : 'text-gray-300'} 
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    <blockquote className="italic text-sibelcom-gray">
-                      "{testimonial.text}"
-                    </blockquote>
-                  </div>
-                </div>
-              ))}
+          <div className="flex flex-col md:flex-row items-center bg-white p-8 rounded-lg shadow-lg">
+            <div className="mb-6 md:mb-0 md:mr-8 flex-shrink-0">
+              <img 
+                src={testimonials[currentIndex].image} 
+                alt={testimonials[currentIndex].author}
+                className="w-24 h-24 rounded-full object-cover border-4 border-sibelcom-yellow"
+              />
+            </div>
+            
+            <div>
+              <p className="text-gray-700 italic mb-6">
+                "{testimonials[currentIndex].quote}"
+              </p>
+              
+              <div>
+                <h4 className="font-bold text-sibelcom-black">{testimonials[currentIndex].author}</h4>
+                <p className="text-sm text-gray-600">
+                  {testimonials[currentIndex].position}, {testimonials[currentIndex].company}
+                </p>
+              </div>
             </div>
           </div>
           
-          <div className="absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
+          {/* Кнопки навигации */}
+          <div className="flex justify-center mt-8 space-x-2">
+            <button
+              onClick={prevTestimonial}
+              className="p-2 rounded-full bg-white border border-gray-300 hover:bg-sibelcom-yellow hover:border-sibelcom-yellow transition-colors"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-3 h-3 rounded-full mx-1 ${
+                  index === currentIndex ? 'bg-sibelcom-yellow' : 'bg-gray-300'
+                }`}
+              />
+            ))}
+            
             <button
               onClick={nextTestimonial}
-              className="p-2 rounded-full bg-white shadow-md text-sibelcom-black hover:bg-sibelcom-yellow transition-colors"
-              aria-label="Следующий отзыв"
+              className="p-2 rounded-full bg-white border border-gray-300 hover:bg-sibelcom-yellow hover:border-sibelcom-yellow transition-colors"
             >
               <ChevronRight size={20} />
             </button>
           </div>
-        </div>
-        
-        <div className="flex justify-center mt-6 space-x-2">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`w-3 h-3 rounded-full transition-colors ${
-                index === activeIndex ? 'bg-sibelcom-yellow' : 'bg-gray-300'
-              }`}
-              aria-label={`Перейти к отзыву ${index + 1}`}
-            />
-          ))}
         </div>
       </div>
     </section>

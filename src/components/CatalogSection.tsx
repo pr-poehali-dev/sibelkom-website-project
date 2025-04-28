@@ -1,73 +1,98 @@
-import { Cpu, ChipIcon, BatteryMedium, Cable } from 'lucide-react';
+
+import { Button } from './ui/button';
+
+interface CatalogItem {
+  image: string;
+  title: string;
+  count: string;
+  link: string;
+}
+
+const catalogItems: CatalogItem[] = [
+  {
+    image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+    title: 'Микроконтроллеры',
+    count: '2500+ наименований',
+    link: '/catalog/microcontrollers'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1555664424-778a1e5e1b48?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+    title: 'Пассивные компоненты',
+    count: '10000+ наименований',
+    link: '/catalog/passive'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1563770660941-10a1b3f5c321?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+    title: 'Датчики и сенсоры',
+    count: '1500+ наименований',
+    link: '/catalog/sensors'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1611073061518-8d2b87f8cb9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+    title: 'Силовая электроника',
+    count: '3000+ наименований',
+    link: '/catalog/power'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1563770660938-ec3ed01fd44e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+    title: 'Разъемы и соединители',
+    count: '5000+ наименований',
+    link: '/catalog/connectors'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1601045569976-ac87f017f9df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80',
+    title: 'Дисплеи и индикаторы',
+    count: '800+ наименований',
+    link: '/catalog/displays'
+  }
+];
 
 const CatalogSection = () => {
-  const categories = [
-    {
-      icon: <Cpu className="h-16 w-16 text-sibelcom-yellow" />,
-      title: 'Микроконтроллеры',
-      description: 'Широкий выбор микроконтроллеров различных архитектур и производителей',
-      link: '/catalog/microcontrollers',
-      brands: ['STM', 'NXP', 'Microchip', 'TI']
-    },
-    {
-      icon: <ChipIcon className="h-16 w-16 text-sibelcom-yellow" />,
-      title: 'Микросхемы',
-      description: 'Интегральные схемы, операционные усилители, стабилизаторы и др.',
-      link: '/catalog/chips',
-      brands: ['Analog Devices', 'TI', 'Infineon', 'ST']
-    },
-    {
-      icon: <BatteryMedium className="h-16 w-16 text-sibelcom-yellow" />,
-      title: 'Пассивные компоненты',
-      description: 'Резисторы, конденсаторы, индуктивности разных номиналов и типов',
-      link: '/catalog/passive',
-      brands: ['KEMET', 'Murata', 'YAGEO', 'Vishay']
-    },
-    {
-      icon: <Cable className="h-16 w-16 text-sibelcom-yellow" />,
-      title: 'Коннекторы',
-      description: 'Разъемы, соединители и кабельная продукция для любых задач',
-      link: '/catalog/connectors',
-      brands: ['TE Connectivity', 'Molex', 'JST', 'Hirose']
-    }
-  ];
-
   return (
     <section className="py-16 bg-white">
       <div className="container-custom">
-        <h2 className="section-title">Каталог товаров</h2>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4 text-sibelcom-black">Каталог товаров</h2>
+          <p className="text-gray-700 max-w-2xl mx-auto">
+            Мы поставляем широкий ассортимент электронных компонентов от ведущих производителей Китая и Юго-Восточной Азии
+          </p>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-          {categories.map((category, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {catalogItems.map((item, index) => (
             <a 
-              key={index} 
-              href={category.link}
-              className="bg-sibelcom-lightBg p-6 rounded-lg border border-gray-200 hover:shadow-md transition-shadow text-center group"
+              key={index}
+              href={item.link}
+              className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <div className="mb-4 flex justify-center">{category.icon}</div>
-              <h3 className="text-xl font-bold mb-3 group-hover:text-sibelcom-yellow transition-colors">{category.title}</h3>
-              <p className="text-sibelcom-gray mb-4 text-sm">{category.description}</p>
-              <div className="mt-4 pt-4 border-t border-gray-200">
-                <p className="text-xs text-sibelcom-gray mb-2">Популярные бренды:</p>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {category.brands.map((brand, idx) => (
-                    <span key={idx} className="text-xs bg-white px-2 py-1 rounded-full text-sibelcom-gray">
-                      {brand}
-                    </span>
-                  ))}
-                </div>
+              <div className="aspect-video w-full overflow-hidden">
+                <img 
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6 text-white">
+                <h3 className="text-xl font-bold mb-1">{item.title}</h3>
+                <p className="text-sm text-gray-300 mb-3">{item.count}</p>
+                <span className="inline-flex items-center text-sibelcom-yellow text-sm font-medium opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                  Перейти в каталог
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
               </div>
             </a>
           ))}
         </div>
         
-        <div className="mt-10 text-center">
-          <a 
-            href="/catalog" 
-            className="inline-block text-sibelcom-black font-medium hover:text-sibelcom-yellow transition-colors underline"
+        <div className="text-center mt-10">
+          <Button 
+            className="bg-sibelcom-yellow hover:bg-sibelcom-orange text-sibelcom-black font-medium"
           >
-            Перейти в полный каталог
-          </a>
+            Полный каталог
+          </Button>
         </div>
       </div>
     </section>
