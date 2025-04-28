@@ -23,9 +23,7 @@ const Header = () => {
       <div className="container-custom flex items-center justify-between h-20">
         {/* Логотип */}
         <Link to="/" className="flex items-center">
-          <span className="text-xl font-bold text-sibelcom-black">
-            <span className="text-sibelcom-yellow">СибЭлком</span> Логистика
-          </span>
+          <img src="/logo.png" alt="СибЭлком Логистика" className="h-12" />
         </Link>
 
         {/* Меню для десктопа */}
@@ -38,14 +36,14 @@ const Header = () => {
         </nav>
 
         {/* Кнопка личного кабинета */}
-        <Button className="hidden md:flex items-center bg-sibelcom-orange hover:bg-sibelcom-yellow text-white rounded-full px-4 py-2 transition-colors">
+        <Button className="hidden md:flex items-center bg-sibelcom-orange hover:bg-sibelcom-orange/90 text-white rounded-full px-4 py-2 transition-colors">
           <User className="mr-2 h-4 w-4" />
           <span>Личный кабинет</span>
         </Button>
 
         {/* Мобильное меню */}
         <button
-          className="lg:hidden text-sibelcom-black"
+          className="lg:hidden text-sibelcom-darkgray"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <Menu size={24} />
@@ -53,16 +51,14 @@ const Header = () => {
 
         {/* Мобильная навигация */}
         {isMenuOpen && (
-          <div className="lg:hidden fixed inset-0 bg-white z-50 pt-4">
+          <div className="lg:hidden fixed inset-0 bg-white z-50 pt-4 overflow-y-auto">
             <div className="container mx-auto px-4">
               <div className="flex justify-between items-center mb-8">
                 <Link to="/" className="flex items-center">
-                  <span className="text-xl font-bold text-sibelcom-black">
-                    <span className="text-sibelcom-yellow">СибЭлком</span> Логистика
-                  </span>
+                  <img src="/logo.png" alt="СибЭлком Логистика" className="h-12" />
                 </Link>
                 <button
-                  className="text-sibelcom-black"
+                  className="text-sibelcom-darkgray"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <X size={24} />
@@ -79,7 +75,7 @@ const Header = () => {
                     {item.label}
                   </Link>
                 ))}
-                <Button className="flex items-center bg-sibelcom-orange hover:bg-sibelcom-yellow text-white rounded-full px-4 py-2 w-full justify-center mt-4">
+                <Button className="flex items-center bg-sibelcom-orange hover:bg-sibelcom-orange/90 text-white rounded-full px-4 py-2 w-full justify-center mt-4">
                   <User className="mr-2 h-4 w-4" />
                   <span>Личный кабинет</span>
                 </Button>

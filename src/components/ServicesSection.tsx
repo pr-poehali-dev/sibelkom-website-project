@@ -1,50 +1,36 @@
-
-import { Truck, Cpu, Search, ShieldCheck, Clock, Zap } from 'lucide-react';
+import { Truck, Factory, Cpu, Search, FileCheck, Clock } from 'lucide-react';
 import { Button } from './ui/button';
 
-interface ServiceCard {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  link: string;
-}
-
-const services: ServiceCard[] = [
+const services = [
   {
-    icon: <Truck className="h-10 w-10 text-sibelcom-yellow" />,
-    title: 'Линия поставок',
-    description: 'Прямые поставки электронных компонентов от производителей Китая, Тайваня и Юго-Восточной Азии.',
-    link: '/supply-line'
+    icon: <Truck className="w-10 h-10 text-sibelcom-orange" />,
+    title: 'Логистика',
+    description: 'Прямые поставки электронных компонентов из Китая с оптимальными сроками доставки'
   },
   {
-    icon: <Cpu className="h-10 w-10 text-sibelcom-yellow" />,
+    icon: <Factory className="w-10 h-10 text-sibelcom-orange" />,
     title: 'Контрактное производство',
-    description: 'Полный цикл производства электроники от проектирования до монтажа и тестирования.',
-    link: '/contract-manufacturing'
+    description: 'Размещение заказов на производство электронных изделий под вашими требованиями'
   },
   {
-    icon: <Zap className="h-10 w-10 text-sibelcom-yellow" />,
+    icon: <Cpu className="w-10 h-10 text-sibelcom-orange" />,
     title: 'Моточные изделия',
-    description: 'Производство трансформаторов, дросселей, катушек индуктивности и других моточных изделий.',
-    link: '/winding-products'
+    description: 'Производство трансформаторов, дросселей и других моточных изделий на заказ'
   },
   {
-    icon: <Search className="h-10 w-10 text-sibelcom-yellow" />,
+    icon: <Search className="w-10 h-10 text-sibelcom-orange" />,
     title: 'Подбор аналогов',
-    description: 'Профессиональный подбор аналогов электронных компонентов при снятии с производства или дефиците.',
-    link: '/analogs'
+    description: 'Помощь в поиске и подборе аналогов снятых с производства компонентов'
   },
   {
-    icon: <ShieldCheck className="h-10 w-10 text-sibelcom-yellow" />,
+    icon: <FileCheck className="w-10 h-10 text-sibelcom-orange" />,
     title: 'Контроль качества',
-    description: 'Многоступенчатая система проверки и тестирования каждой партии компонентов.',
-    link: '/quality-control'
+    description: 'Тщательная проверка каждой партии товара перед отправкой заказчику'
   },
   {
-    icon: <Clock className="h-10 w-10 text-sibelcom-yellow" />,
-    title: 'Быстрые сроки',
-    description: 'Оптимальные сроки поставки благодаря отлаженной логистике и наличию собственных складов.',
-    link: '/delivery'
+    icon: <Clock className="w-10 h-10 text-sibelcom-orange" />,
+    title: 'Срочная поставка',
+    description: 'Возможность экспресс-доставки компонентов для срочных производственных нужд'
   }
 ];
 
@@ -53,45 +39,37 @@ const ServicesSection = () => {
     <section className="py-16 bg-sibelcom-lightBg">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-sibelcom-black">Наши услуги</h2>
-          <p className="text-gray-700 max-w-2xl mx-auto">
-            Мы предлагаем полный комплекс услуг по поставке электронных компонентов 
-            и контрактному производству электроники
+          <h2 className="section-heading-center">Наши услуги</h2>
+          <p className="max-w-2xl mx-auto text-lg mt-4">
+            Предлагаем полный комплекс услуг по поставке электронных компонентов, от закупки до контроля качества
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div 
-              key={index}
-              className="bg-white p-6 rounded-lg shadow-md transition-transform hover:-translate-y-1 hover:shadow-lg"
+              key={index} 
+              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 relative overflow-hidden group"
             >
-              <div className="mb-4">{service.icon}</div>
-              <h3 className="text-xl font-bold mb-2 text-sibelcom-black">{service.title}</h3>
-              <p className="text-gray-700 mb-4">{service.description}</p>
-              <a 
-                href={service.link}
-                className="text-sibelcom-black font-medium inline-flex items-center hover:text-sibelcom-yellow transition-colors"
-              >
-                Подробнее
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  className="h-4 w-4 ml-1" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
+              {/* Декоративный ромб в углу */}
+              <div className="absolute -right-8 -top-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                <div className="diamond-shape bg-sibelcom-gray w-20 h-20"></div>
+              </div>
+              
+              <div className="flex flex-col h-full">
+                <div className="mb-4">{service.icon}</div>
+                <h3 className="text-xl font-bold mb-3 text-sibelcom-darkgray">{service.title}</h3>
+                <p className="text-gray-600 mb-6 flex-grow">{service.description}</p>
+                <Button variant="link" className="px-0 text-sibelcom-orange hover:text-sibelcom-orange/80 font-medium">
+                  Подробнее
+                </Button>
+              </div>
             </div>
           ))}
         </div>
         
-        <div className="text-center mt-10">
-          <Button 
-            className="bg-sibelcom-yellow hover:bg-sibelcom-orange text-sibelcom-black font-medium"
-          >
+        <div className="mt-12 text-center">
+          <Button className="bg-sibelcom-orange hover:bg-sibelcom-orange/90 text-white px-8 py-6">
             Все услуги
           </Button>
         </div>

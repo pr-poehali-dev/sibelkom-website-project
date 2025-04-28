@@ -1,4 +1,3 @@
-
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -6,43 +5,39 @@ const AboutSection = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div className="order-2 md:order-1">
-            <h2 className="text-3xl font-bold mb-6 text-sibelcom-black">О компании</h2>
-            
-            <p className="text-gray-700 mb-4">
-              <strong>СибЭлком Логистика</strong> - надежный поставщик электронных компонентов 
-              напрямую от китайских производителей. Более 13 лет мы обеспечиваем 
-              российские предприятия качественными комплектующими для электроники.
-            </p>
-            
-            <p className="text-gray-700 mb-6">
-              Наша компания специализируется на прямых поставках электронных компонентов, 
-              минуя посредников, что позволяет предлагать конкурентные цены и оптимальные 
-              сроки доставки. Мы гарантируем качество всей поставляемой продукции и 
-              обеспечиваем полную техническую поддержку.
-            </p>
-            
-            <Button 
-              variant="outline" 
-              className="group flex items-center border-sibelcom-yellow text-sibelcom-black hover:bg-sibelcom-yellow"
-            >
-              Подробнее о компании
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </div>
-          
-          <div className="order-1 md:order-2">
-            <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                alt="Команда СибЭлком" 
-                className="rounded-lg shadow-lg w-full h-auto object-cover"
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Изображение с элементами дизайна */}
+          <div className="relative">
+            <div className="diagonal-box h-64 w-full lg:h-96 mb-6 lg:mb-0 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                alt="Команда СибЭлком"
+                className="object-cover h-full w-full"
               />
-              <div className="absolute -bottom-5 -left-5 bg-sibelcom-yellow p-4 rounded-lg shadow-lg">
-                <p className="font-bold text-sibelcom-black">13+ лет опыта</p>
+              {/* Декоративный элемент в стиле логотипа */}
+              <div className="absolute -bottom-6 -right-6">
+                <div className="diamond-shape bg-sibelcom-orange w-16 h-16">
+                  <div className="absolute inset-0 flex items-center justify-center z-10">
+                    <div className="diamond-shape bg-white w-10 h-10"></div>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+          
+          {/* Текстовый контент */}
+          <div>
+            <h2 className="section-heading">О компании</h2>
+            <p className="text-lg mb-4">
+              Компания "СибЭлком Логистика" специализируется на прямых поставках электронных компонентов от ведущих китайских производителей. За более чем 13 лет работы мы установили надежные партнерские отношения с крупнейшими фабриками и дистрибьюторами Китая.
+            </p>
+            <p className="text-lg mb-6">
+              Наша цель — обеспечить российские предприятия качественными комплектующими по конкурентоспособным ценам. Мы гарантируем подлинность всех поставляемых компонентов и предоставляем полную техническую поддержку на каждом этапе сотрудничества.
+            </p>
+            <Button className="bg-sibelcom-orange hover:bg-sibelcom-orange/90 text-white flex items-center group">
+              Подробнее о компании
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </Button>
           </div>
         </div>
       </div>

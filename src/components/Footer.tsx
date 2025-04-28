@@ -1,124 +1,121 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Mail, Phone } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
-  const menuColumns = [
-    {
-      title: 'Компания',
-      links: [
-        { label: 'О компании', path: '/about' },
-        { label: 'Новости', path: '/news' },
-        { label: 'Линия поставок', path: '/supply-line' },
-        { label: 'Контроль качества', path: '/quality-control' },
-      ],
-    },
-    {
-      title: 'Услуги',
-      links: [
-        { label: 'Контрактное производство', path: '/contract-manufacturing' },
-        { label: 'Моточные изделия', path: '/winding-products' },
-        { label: 'Подбор аналогов', path: '/analogs' },
-        { label: 'База даташит', path: '/datasheet' },
-      ],
-    },
-    {
-      title: 'Информация',
-      links: [
-        { label: 'Доставка и оплата', path: '/delivery' },
-        { label: 'Гарантия', path: '/warranty' },
-        { label: 'Наши клиенты', path: '/clients' },
-        { label: 'Контакты', path: '/contacts' },
-      ],
-    },
-  ];
 
   return (
-    <footer className="bg-sibelcom-black text-white pt-16 pb-8">
+    <footer className="bg-sibelcom-darkgray text-white pt-16 pb-8">
       <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          {/* Логотип и контактная информация */}
-          <div className="lg:col-span-2">
-            <Link to="/" className="inline-block mb-6">
-              <span className="text-2xl font-bold">
-                <span className="text-sibelcom-yellow">СибЭлком</span> Логистика
-              </span>
-            </Link>
-            
-            <p className="text-sibelcom-gray mb-6 max-w-md">
-              Прямые поставки электронных компонентов от китайских производителей. 
-              Гарантия качества, оптимальные сроки, конкурентные цены.
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+          {/* Информация о компании */}
+          <div>
+            <div className="flex items-center mb-6">
+              <img src="/logo.png" alt="СибЭлком Логистика" className="h-12 mr-3 bg-white p-1 rounded" />
+            </div>
+            <p className="text-gray-300 mb-6">
+              Прямые поставки электронных компонентов от китайских производителей. Более 13 лет на рынке.
             </p>
-            
-            <div className="space-y-3">
-              <div className="flex items-center">
-                <Phone className="h-5 w-5 text-sibelcom-yellow mr-3" />
-                <span>+7 (383) 123-45-67</span>
-              </div>
-              
-              <div className="flex items-center">
-                <Mail className="h-5 w-5 text-sibelcom-yellow mr-3" />
-                <span>info@sibelcom.ru</span>
-              </div>
-              
-              <div className="flex items-center">
-                <MapPin className="h-5 w-5 text-sibelcom-yellow mr-3" />
-                <span>г. Новосибирск, ул. Технопарковая, 5</span>
-              </div>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-300 hover:text-sibelcom-orange transition-colors">
+                <Facebook size={20} />
+              </a>
+              <a href="#" className="text-gray-300 hover:text-sibelcom-orange transition-colors">
+                <Twitter size={20} />
+              </a>
+              <a href="#" className="text-gray-300 hover:text-sibelcom-orange transition-colors">
+                <Instagram size={20} />
+              </a>
+              <a href="#" className="text-gray-300 hover:text-sibelcom-orange transition-colors">
+                <Youtube size={20} />
+              </a>
             </div>
           </div>
           
-          {/* Меню */}
-          {menuColumns.map((column, index) => (
-            <div key={index}>
-              <h3 className="text-lg font-bold mb-4">{column.title}</h3>
-              <ul className="space-y-2">
-                {column.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <Link 
-                      to={link.path} 
-                      className="text-sibelcom-gray hover:text-sibelcom-yellow transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Навигация */}
+          <div>
+            <h3 className="text-xl font-bold mb-6 relative after:content-[''] after:absolute after:w-12 after:h-1 after:bg-sibelcom-orange after:left-0 after:-bottom-2">
+              Разделы сайта
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/about" className="text-gray-300 hover:text-sibelcom-orange transition-colors">О компании</Link>
+              </li>
+              <li>
+                <Link to="/supply-line" className="text-gray-300 hover:text-sibelcom-orange transition-colors">Линия поставок</Link>
+              </li>
+              <li>
+                <Link to="/contract-manufacturing" className="text-gray-300 hover:text-sibelcom-orange transition-colors">Контрактное производство</Link>
+              </li>
+              <li>
+                <Link to="/analogs" className="text-gray-300 hover:text-sibelcom-orange transition-colors">Подбор аналогов</Link>
+              </li>
+              <li>
+                <Link to="/contacts" className="text-gray-300 hover:text-sibelcom-orange transition-colors">Контакты</Link>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Каталог */}
+          <div>
+            <h3 className="text-xl font-bold mb-6 relative after:content-[''] after:absolute after:w-12 after:h-1 after:bg-sibelcom-orange after:left-0 after:-bottom-2">
+              Каталог
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/catalog/microcontrollers" className="text-gray-300 hover:text-sibelcom-orange transition-colors">Микроконтроллеры</Link>
+              </li>
+              <li>
+                <Link to="/catalog/passive" className="text-gray-300 hover:text-sibelcom-orange transition-colors">Пассивные компоненты</Link>
+              </li>
+              <li>
+                <Link to="/catalog/sensors" className="text-gray-300 hover:text-sibelcom-orange transition-colors">Датчики и сенсоры</Link>
+              </li>
+              <li>
+                <Link to="/catalog/connectors" className="text-gray-300 hover:text-sibelcom-orange transition-colors">Разъёмы и соединители</Link>
+              </li>
+              <li>
+                <Link to="/catalog" className="text-gray-300 hover:text-sibelcom-orange transition-colors">Полный каталог</Link>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Контакты */}
+          <div>
+            <h3 className="text-xl font-bold mb-6 relative after:content-[''] after:absolute after:w-12 after:h-1 after:bg-sibelcom-orange after:left-0 after:-bottom-2">
+              Контакты
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-center">
+                <Phone className="text-sibelcom-orange mr-3 flex-shrink-0" size={18} />
+                <span className="text-gray-300">+7 (383) 123-45-67</span>
+              </li>
+              <li className="flex items-center">
+                <Mail className="text-sibelcom-orange mr-3 flex-shrink-0" size={18} />
+                <span className="text-gray-300">info@sibelcom.ru</span>
+              </li>
+              <li className="text-gray-300">
+                <p>630099, Россия,</p>
+                <p>г. Новосибирск, ул. Ленина, д. 21, офис 305</p>
+              </li>
+            </ul>
+          </div>
         </div>
         
-        <hr className="border-gray-800 my-8" />
-        
-        {/* Нижняя часть футера */}
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sibelcom-gray text-sm mb-4 md:mb-0">
-            © {currentYear} СибЭлком Логистика. Все права защищены.
-          </p>
-          
-          <div className="flex space-x-4">
-            <a href="#" className="text-sibelcom-gray hover:text-sibelcom-yellow transition-colors">
-              <Facebook className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-sibelcom-gray hover:text-sibelcom-yellow transition-colors">
-              <Twitter className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-sibelcom-gray hover:text-sibelcom-yellow transition-colors">
-              <Instagram className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-sibelcom-gray hover:text-sibelcom-yellow transition-colors">
-              <Linkedin className="h-5 w-5" />
-            </a>
-          </div>
-          
-          <div className="flex mt-4 md:mt-0">
-            <Link to="/privacy" className="text-sibelcom-gray text-sm hover:text-sibelcom-yellow transition-colors mr-4">
-              Политика конфиденциальности
-            </Link>
-            <Link to="/terms" className="text-sibelcom-gray text-sm hover:text-sibelcom-yellow transition-colors">
-              Пользовательское соглашение
-            </Link>
+        {/* Разделитель */}
+        <div className="border-t border-gray-700 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+              © {currentYear} ООО "СибЭлком Логистика". Все права защищены.
+            </p>
+            <div className="flex space-x-4 text-sm text-gray-400">
+              <Link to="/privacy-policy" className="hover:text-sibelcom-orange transition-colors">
+                Политика конфиденциальности
+              </Link>
+              <Link to="/terms" className="hover:text-sibelcom-orange transition-colors">
+                Условия использования
+              </Link>
+            </div>
           </div>
         </div>
       </div>

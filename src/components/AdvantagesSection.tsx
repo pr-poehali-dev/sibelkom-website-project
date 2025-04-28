@@ -1,81 +1,72 @@
+import { ShieldCheck, Clock, ThumbsUp, Timer, Package, BadgePercent } from 'lucide-react';
 
-import { Shield, Truck, Badge, DollarSign, Clock, HeadphonesIcon } from 'lucide-react';
-
-interface Advantage {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
-
-const advantages: Advantage[] = [
+const advantages = [
   {
-    icon: <Shield className="h-10 w-10 text-sibelcom-yellow" />,
+    icon: <ShieldCheck className="w-12 h-12 text-sibelcom-orange" />,
     title: 'Гарантия качества',
-    description: 'На все поставляемые компоненты предоставляется гарантия 12 месяцев.'
+    description: 'Гарантия 12 месяцев на все поставляемые компоненты'
   },
   {
-    icon: <Truck className="h-10 w-10 text-sibelcom-yellow" />,
+    icon: <Clock className="w-12 h-12 text-sibelcom-orange" />,
+    title: 'Опыт работы',
+    description: 'Более 13 лет успешной работы на рынке электронных компонентов'
+  },
+  {
+    icon: <ThumbsUp className="w-12 h-12 text-sibelcom-orange" />,
     title: 'Прямые поставки',
-    description: 'Работаем напрямую с производителями, исключая посредников.'
+    description: 'Работаем напрямую с китайскими производителями без посредников'
   },
   {
-    icon: <Badge className="h-10 w-10 text-sibelcom-yellow" />,
-    title: '13+ лет опыта',
-    description: 'Более 13 лет успешной работы на рынке электронных компонентов.'
+    icon: <Timer className="w-12 h-12 text-sibelcom-orange" />,
+    title: 'Быстрая доставка',
+    description: 'Оптимальные сроки доставки даже для сложных заказов'
   },
   {
-    icon: <DollarSign className="h-10 w-10 text-sibelcom-yellow" />,
+    icon: <Package className="w-12 h-12 text-sibelcom-orange" />,
+    title: 'Широкий ассортимент',
+    description: 'Более 1 000 000 наименований электронных компонентов'
+  },
+  {
+    icon: <BadgePercent className="w-12 h-12 text-sibelcom-orange" />,
     title: 'Конкурентные цены',
-    description: 'Оптимальное соотношение цены и качества на все товары.'
-  },
-  {
-    icon: <Clock className="h-10 w-10 text-sibelcom-yellow" />,
-    title: 'Быстрые сроки',
-    description: 'Минимальные сроки поставки благодаря отлаженной логистике.'
-  },
-  {
-    icon: <HeadphonesIcon className="h-10 w-10 text-sibelcom-yellow" />,
-    title: 'Техническая поддержка',
-    description: 'Профессиональная консультация на всех этапах сотрудничества.'
+    description: 'Выгодные условия для постоянных клиентов и оптовых заказов'
   }
 ];
 
 const AdvantagesSection = () => {
   return (
-    <section className="py-16 bg-sibelcom-black text-white">
-      <div className="container-custom">
+    <section className="py-16 relative overflow-hidden">
+      {/* Фоновый элемент в стиле логотипа */}
+      <div className="absolute -right-36 top-1/2 -translate-y-1/2 opacity-5">
+        <div className="diamond-shape bg-sibelcom-gray w-96 h-96"></div>
+      </div>
+      <div className="absolute -left-36 bottom-0 opacity-5">
+        <div className="diamond-shape bg-sibelcom-orange w-64 h-64"></div>
+      </div>
+      
+      <div className="container-custom relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Наши преимущества</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Почему клиенты выбирают СибЭлком Логистика для поставки электронных компонентов
+          <h2 className="section-heading-center">Наши преимущества</h2>
+          <p className="max-w-2xl mx-auto text-lg mt-4">
+            Почему клиенты выбирают СибЭлком Логистика для поставок электронных компонентов
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {advantages.map((advantage, index) => (
             <div 
-              key={index}
-              className="p-6 border border-gray-800 rounded-lg transition-transform hover:-translate-y-1"
+              key={index} 
+              className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 flex"
             >
-              <div className="mb-4">{advantage.icon}</div>
-              <h3 className="text-xl font-bold mb-2">{advantage.title}</h3>
-              <p className="text-gray-400">{advantage.description}</p>
+              <div className="mr-4 mt-1">
+                {advantage.icon}
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2 text-sibelcom-darkgray">{advantage.title}</h3>
+                <p className="text-gray-600">{advantage.description}</p>
+              </div>
             </div>
           ))}
-        </div>
-        
-        <div className="mt-12 bg-gray-900 p-8 rounded-lg">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="mb-6 md:mb-0">
-              <h3 className="text-2xl font-bold mb-2">Нужна консультация?</h3>
-              <p className="text-gray-400">
-                Свяжитесь с нами для получения профессиональной консультации
-              </p>
-            </div>
-            <button className="py-3 px-6 bg-sibelcom-yellow hover:bg-sibelcom-orange text-sibelcom-black font-medium rounded-lg transition-colors">
-              Связаться с нами
-            </button>
-          </div>
         </div>
       </div>
     </section>
